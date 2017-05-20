@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',
-    'script!foundation-sites/dist/js/foundation.min.js',
+    'script!foundation-sites/dist/foundation.min.js',
     './app/app.jsx'
   ],
   externals: {
@@ -25,10 +25,9 @@ module.exports = {
     modulesDirectories: [
       'node_modules',
       './app/components',
-      './api'
+      './app/api'
     ],
     alias: {
-      Main: 'app/components/Main.jsx',
       applicationStyles: 'app/styles/app.scss',
       actions: 'app/actions/actions.jsx',
       reducers: 'app/reducers/reducers.jsx'
@@ -40,11 +39,10 @@ module.exports = {
       {
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
+          presets: ['react', 'es2015', 'stage-0']
         },
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/
-
       }
     ]
   },
@@ -53,6 +51,5 @@ module.exports = {
       path.resolve(__dirname, './node_modules/foundation-sites/scss')
     ]
   },
-
-  devtool: 'inline-source-map'
+  devtool: 'cheap-module-eval-source-map'
 };
